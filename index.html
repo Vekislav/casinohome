@@ -10,19 +10,19 @@
 <body>
     <div class="container">
         <h1>Casino by @svejeveki</h1>
+
+        <!-- Button Container with Balance and Redeem -->
         <div class="button-container">
+            <!-- Game Buttons -->
             <a href="https://vekislav.github.io/casino/rulet/dist/" class="button">Roulette🎡</a>
             <a href="https://vekislav.github.io/casino/bj/" class="button">BlackJack♣️</a>
             <a href="https://vekislav.github.io/casino/blackjackfun/" class="button">BlackJack - NoBLNC🃏</a>
             <a href="https://vekislav.github.io/casino/EmojiSpin/" class="button">Slots🎰</a>
-        </div>
-    </div>
 
-    <!-- Middle-left Balance Placeholder -->
-    <div id="balance-placeholder" class="balance-placeholder">
-        Balance: <span id="slotBalance">Loading...</span>
-        <div>
-            <button id="redeem-button" class="button">Redeem Code</button>
+            <!-- Balance Display and Redeem Code -->
+            <button id="balance-redeem" class="button">
+                Balance: <span id="slotBalance">Loading...</span>
+            </button>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
         };
 
         // Redeem Code Functionality
-        document.getElementById('redeem-button').addEventListener('click', function () {
+        document.getElementById('balance-redeem').addEventListener('click', function () {
             const code = prompt("Enter your redeem code:");
             if (!code) return; // Exit if no code is entered
 
