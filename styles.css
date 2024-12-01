@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #212121; /* Dark mode background stays black */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    color: black; /* Text turns black in light mode */
+    background: linear-gradient(135deg, #ff4d4d, #6a0dad); /* Initial light mode gradient */
+}
+
+/* Container */
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* More dimmed background in dark mode */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .container {
+    background: rgba(255, 255, 255, 0.7); /* Dimmed background for light mode */
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    background: rgba(56, 57, 59, 0.5); /* 50% transparent background */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+body.light-mode .button {
+    color: #333;
+    background: rgba(221, 221, 221, 0.5); /* Light mode semi-transparent button */
+}
+
+.button:hover {
+    background: linear-gradient(#066264, #04484a);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.light-mode .button:hover {
+    background: linear-gradient(#e3a900, #c57f00);
+}
+
+/* Light Mode Button */
+.light-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.light-mode-toggle:hover {
+    transform: scale(1.1);
+}
