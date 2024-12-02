@@ -1,90 +1,50 @@
 <!DOCTYPE html>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1792431362624918"
-     crossorigin="anonymous"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Vekislav's Homepage of apps</title>
+    <title>Vekislav's Homepage of Apps</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Casino by @svejeveki</h1>
 
-        <!-- Button Container with Balance and Redeem -->
+        <!-- Game Buttons -->
         <div class="button-container">
-            <!-- Game Buttons -->
             <a href="https://vekislav.github.io/casino/rulet/dist/" class="button">Roulette🎡</a>
             <a href="https://vekislav.github.io/casino/bj/" class="button">BlackJack♣️</a>
             <a href="https://vekislav.github.io/casino/blackjackfun/" class="button">BlackJack - NoBLNC🃏</a>
             <a href="https://vekislav.github.io/casino/EmojiSpin/" class="button">Slots🎰</a>
+        </div>
 
-            <!-- Balance Display and Redeem Code -->
+        <!-- Balance and Sign-Up -->
+        <div class="user-container">
             <button id="balance-redeem" class="button">
                 Balance: <span id="slotBalance">Loading...</span>
             </button>
+            <button id="signup-button" class="button">Sign Up</button>
         </div>
+    </div>
+
+    <!-- Sign-Up Modal -->
+    <div id="signup-modal" class="modal hidden">
+        <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit" class="button">Register</button>
+            <button type="button" id="close-modal" class="button">Close</button>
+        </form>
     </div>
 
     <!-- Light Mode Button -->
     <button id="light-mode-toggle" class="light-mode-toggle">🌞</button>
 
-    <script>
-        // Set initial balance or load from localStorage
-        window.onload = function () {
-            let balance = localStorage.getItem('slotBalance');
-            if (balance === null) {
-                balance = "0"; // Default balance
-                localStorage.setItem('slotBalance', balance);
-            }
-            document.getElementById('slotBalance').textContent = balance;
-        };
-
-        // Redeem Code Functionality
-        document.getElementById('balance-redeem').addEventListener('click', function () {
-            const code = prompt("Enter your redeem code:");
-            if (!code) return; // Exit if no code is entered
-
-            // Fetch codes from codes.txt
-            fetch('codes.txt')
-                .then(response => {
-                    if (!response.ok) throw new Error("Could not fetch codes.txt");
-                    return response.text();
-                })
-                .then(data => {
-                    const codes = data.split(/\r?\n/).map(code => code.trim()); // Split file content into codes
-                    const redeemedCodes = JSON.parse(localStorage.getItem('redeemedCodes') || '[]');
-
-                    if (redeemedCodes.includes(code)) {
-                        alert("This code has already been redeemed!");
-                        return;
-                    }
-
-                    if (codes.includes(code)) {
-                        // Valid code, increase balance
-                        let balance = parseInt(localStorage.getItem('slotBalance'), 10) || 0;
-                        balance += 777; // Add 100 to balance
-                        localStorage.setItem('slotBalance', balance);
-                        document.getElementById('slotBalance').textContent = balance;
-
-                        // Mark code as redeemed
-                        redeemedCodes.push(code);
-                        localStorage.setItem('redeemedCodes', JSON.stringify(redeemedCodes));
-
-                        alert("Code redeemed successfully! 100 added to your balance.");
-                    } else {
-                        alert("Invalid code. Please try again.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching codes:", error);
-                    alert("An error occurred while redeeming the code.");
-                });
-        });
-    </script>
-
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
