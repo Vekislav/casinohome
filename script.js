@@ -4,12 +4,13 @@ import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com
 
 // Your Firebase configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDXqUcUKu_Fzoua6UkeYA9ij3TGcvVM-hs",
+    authDomain: "vekislavcasino.firebaseapp.com",
+    projectId: "vekislavcasino",
+    storageBucket: "vekislavcasino.firebaseapp.com",
+    messagingSenderId: "326124922961",
+    appId: "1:326124922961:web:0f6c6616542b5b0a6c3070"
+    
 };
 
 // Initialize Firebase
