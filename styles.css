@@ -1,78 +1,165 @@
 /* General Styles */
-body {
-    font-family: 'Helvetica', sans-serif;
+html, body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #212121; /* Dark mode background stays black */
+    background-color: #121212;
+    color: #ffffff;
+    height: 100%; /* Ensure body and html take full height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Upbar */
+.upbar {
+    width: 99%;
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 0px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.site-logo {
+    width: 50px;
+    height: 50px;
+}
+
+#balance {
+    padding-right: 650px;
+    font-size: 25px;
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 200px;
+    background-color: #1f1f1f;
+    padding: 10px;
+    border-right: 1px solid #333;
+    height: calc(100vh - 50px); /* Ensure sidebar fills the height */
+    transition: width 0.4s ease, padding 0.4s ease;
+    overflow: hidden; /* Prevent any overflow inside the sidebar */
+}
+
+.sidebar.collapsed {
+    width: 50px;
+    padding: 10px 5px;
+}
+
+#toggle-sidebar {
+    background-color: #333;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#sidebar-content {
+    display: block;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.game-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.game-text {
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Content Area */
+.content {
+    margin-left: 200px; /* Adjusted for the sidebar */
+    padding: 20px;
+    width: calc(100% - 220px); /* Adjusted for the sidebar */
+    margin-top: 50px;
+    display: flex;
+    justify-content: center; /* Always center content */
+    align-items: center;
+    height: calc(100vh - 95px);
+    overflow: hidden;
+    transition: margin-left 0.4s ease, justify-content 0.4s ease;
+}
+
+/* When Sidebar is Collapsed */
+.sidebar.collapsed ~ .content {
+    margin-left: 100px; /* Adjusted when the sidebar is collapsed */
+    justify-content: center; /* Still center content */
+}
+
+/* Wrapper for grid */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap between rows */
+    width: 100%;
+    max-width: 1200px; /* Limit the width of the wrapper */
+    align-items: center; /* Center the items */
+    overflow: hidden; /* Prevent overflow within the wrapper */
+}
+
+.row {
+    display: flex;
+    gap: 20px; /* Increased gap between columns */
+    justify-content: center; /* Center the columns */
+    width: 100%;
+}
+
+.block {
+    flex-shrink: 0;
+    width: 250px; /* Reduced width of slides */
+    height: 150px; /* Reduced height of slides */
+    background-color: #444;
     color: white;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-/* Light Mode Styles */
-body.light-mode {
-    color: black; /* Text turns black in light mode */
-    background: linear-gradient(135deg, #ff4d4d, #6a0dad); /* Initial light mode gradient */
-}
-/* Container */
-.container {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7); /* More dimmed background in dark mode */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-}
-body.light-mode .container {
-    background: rgba(255, 255, 255, 0.7); /* Dimmed background for light mode */
-}
-/* Heading */
-h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-/* Buttons */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.button {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: white;
-    background: rgba(56, 57, 59, 0.5); /* 50% transparent background */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 7px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-    text-align: center;
-}
-body.light-mode .button {
-    color: #333;
-    background: rgba(221, 221, 221, 0.5); /* Light mode semi-transparent button */
-}
-.button:hover {
-    background: linear-gradient(#066264, #04484a);
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-}
-body.light-mode .button:hover {
-    background: linear-gradient(#e3a900, #c57f00);
-}
-/* Light Mode Button */
-.light-mode-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    padding: 15px; /* Added padding inside the blocks */
 }
-.light-mode-toggle:hover {
+
+.block:hover {
     transform: scale(1.1);
+}
+
+.block.placeholder {
+    background-color: #222;
+    color: #777;
+}
+
+/* Sidebar Toggle Animations */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.collapsed {
+        display: block;
+    }
 }
