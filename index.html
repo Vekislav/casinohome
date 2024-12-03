@@ -1,95 +1,66 @@
 <!DOCTYPE html>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1792431362624918"
-     crossorigin="anonymous"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Vekislav's Homepage of apps</title>
+    <title>Updated Layout</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Casino by @svejeveki</h1>
+    <!-- Upbar -->
+    <div class="upbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Site Logo" class="site-logo">
+        </div>
+        <div id="balance" class="balance-center">$<span id="balance-amount">0</span></div>
+    </div>
 
-        <!-- Button Container with Balance and Redeem -->
-        <div class="button-container">
-            <!-- Game Buttons -->
-            <a href="https://vekislav.github.io/casino/DogSlot/" class="button">BigDawgs🦮🎰 - Slot **NEW**</a>
-            <a href="https://vekislav.github.io/casino/HILo/" class="button">HiLo⬆️**NEW**</a>
-            <a href="https://vekislav.github.io/casino/baccarat/" class="button">Baccarat♣️**DEMO BROKEN**</a>
-            <a href="https://vekislav.github.io/casino/crash/" class="button">Krash🚀 **NEW**</a>
-            <a href="https://vekislav.github.io/casino/rulet/dist/" class="button">Roulette🎡</a>
-            <a href="https://vekislav.github.io/casino/bj/" class="button">BlackJack♣️</a>
-            <a href="https://vekislav.github.io/casino/blackjackfun/" class="button">BlackJack - NoBLNC🃏</a>
-            <a href="https://vekislav.github.io/casino/EmojiSpin/" class="button">Emoji😀🎰 - Slot</a>
-            
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button id="toggle-sidebar">-</button>
+            <div id="sidebar-content">
+			
+                <h2>T3G</h2>
+                <div class="game" onclick="location.href='https://vekislav.github.io/casino/crash/';">
+                    <img src="https://vekislav.github.io/casinohome/photosgame/game2.png" alt="EmojiSpin Logo" class="game-logo">
+                    <span class="game-text">Krash</span>
+                </div>
+                <div class="game" onclick="location.href='https://vekislav.github.io/casino/HILo/';">
+                    <img src="https://vekislav.github.io/casinohome/photosgame/game1.png" alt="DogSpin Slot Logo" class="game-logo">
+                    <span class="game-text">Hi-Low</span>
+                </div>
+                <div class="game" onclick="location.href='https://vekislav.github.io/casino/DogSlot/';">
+                    <img src="https://vekislav.github.io/casinohome/photosgame/game4.png" alt="Roulette Logo" class="game-logo">
+                    <span class="game-text">BD</span>
+                </div>
+            </div>
+        </div>
 
-            <!-- Balance Display and Redeem Code -->
-            <button id="balance-redeem" class="button">
-                Balance: <span id="slotBalance">Loading...</span>
-            </button>
+        <!-- Content -->
+        <div class="content">
+            <div class="wrapper">
+                <div class="row">
+                    <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game1.png');" onclick="location.href='https://vekislav.github.io/casino/HILo/';"></div>
+                    <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game2.png');" onclick="location.href='https://vekislav.github.io/casino/crash/';"></div>
+                    <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game3.png');" onclick="location.href='https://vekislav.github.io/casino/baccarat/';">DEMO</div>
+                </div>
+                <div class="row">
+                   <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game.png');" onclick="location.href='https://vekislav.github.io/casino/EmojiSpin/';">Emoji - SLOT</div>
+                   <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game4.png');" onclick="location.href='https://vekislav.github.io/casino/DogSlot/';">SLOT</div>
+                   <div class="block" style="background-image: url('https://via.placeholder.com/300');" onclick="location.href='https://example.com';">TrapSpin - *LTM* SLOT</div>
+                </div>
+                <div class="row">
+                   <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game7.png');" onclick="location.href='https://vekislav.github.io/casino/bj/';">BlackJack</div>
+                   <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game8.png');" onclick="location.href='https://vekislav.github.io/veki/';">Dice (IN WORKS)</div>
+                   <div class="block" style="background-image: url('https://vekislav.github.io/casinohome/photosgame/game9.png');" onclick="location.href='https://vekislav.github.io/veki/';">Plinko (IN WORKS)</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Light Mode Button -->
-    <button id="light-mode-toggle" class="light-mode-toggle">🌞</button>
-
-    <script>
-        // Set initial balance or load from localStorage
-        window.onload = function () {
-            let balance = localStorage.getItem('slotBalance');
-            if (balance === null) {
-                balance = "0"; // Default balance
-                localStorage.setItem('slotBalance', balance);
-            }
-            document.getElementById('slotBalance').textContent = balance;
-        };
-
-        // Redeem Code Functionality
-        document.getElementById('balance-redeem').addEventListener('click', function () {
-            const code = prompt("Enter your redeem code:");
-            if (!code) return; // Exit if no code is entered
-
-            // Fetch codes from codes.txt
-            fetch('codes.txt')
-                .then(response => {
-                    if (!response.ok) throw new Error("Could not fetch codes.txt");
-                    return response.text();
-                })
-                .then(data => {
-                    const codes = data.split(/\r?\n/).map(code => code.trim()); // Split file content into codes
-                    const redeemedCodes = JSON.parse(localStorage.getItem('redeemedCodes') || '[]');
-
-                    if (redeemedCodes.includes(code)) {
-                        alert("This code has already been redeemed!");
-                        return;
-                    }
-
-                    if (codes.includes(code)) {
-                        // Valid code, increase balance
-                        let balance = parseInt(localStorage.getItem('slotBalance'), 10) || 0;
-                        balance += 777; // Add 100 to balance
-                        localStorage.setItem('slotBalance', balance);
-                        document.getElementById('slotBalance').textContent = balance;
-
-                        // Mark code as redeemed
-                        redeemedCodes.push(code);
-                        localStorage.setItem('redeemedCodes', JSON.stringify(redeemedCodes));
-
-                        alert("Code redeemed successfully! 100 added to your balance.");
-                    } else {
-                        alert("Invalid code. Please try again.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching codes:", error);
-                    alert("An error occurred while redeeming the code.");
-                });
-        });
-    </script>
-
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
